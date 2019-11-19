@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar Cliente</title>
+</head>
+<body>
+
+   <form th:method="post" th:action="@{/admin/clientes/criarNovo}">
+      <label>Nome: </label>
+      <input th:text="${novoCliente.nome}"><br>
+      <label>CPF: </label>
+      <input  th:text="${novoCliente.cpf}"><br>
+      <input  type="submit" value="Salvar">
+   </form>
+
+</body>
+</html>
