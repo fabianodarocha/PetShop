@@ -9,8 +9,10 @@
   <label th:text="${mensagem}" />
 
   <ul>
-      <li  th:each="cli : ${clientes}" th:text="${cli}"></li>
+      <li  th:each="cli : ${clientes}" th:text="${cli.nome}"></li>
   </ul>
+
+  <a th:href="@{/admin/clientes/criar}">Criar Novo</a>
 
 </body>
 </html>

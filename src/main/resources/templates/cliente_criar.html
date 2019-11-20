@@ -8,9 +8,9 @@
 
    <form th:method="post" th:action="@{/admin/clientes/criarNovo}">
       <label>Nome: </label>
-      <input th:text="${novoCliente.nome}"><br>
+      <input name="nome"><br>
       <label>CPF: </label>
-      <input  th:text="${novoCliente.cpf}"><br>
+      <input  name="cpf"><br>
       <input  type="submit" value="Salvar">
    </form>
 

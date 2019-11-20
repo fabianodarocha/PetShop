@@ -36,8 +36,8 @@ public class ClienteController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value="/admin/clientes/criarNovo")
-    public String criarNovo(Model model) {
-        Cliente cliente = (Cliente) model.getAttribute("novoCliente");
+    public String criarNovo(Cliente cliente, Model model) {
+
         clienteService.salvar(cliente);
         model.addAttribute("mensagem", "Cliente salvo com sucesso");
 
