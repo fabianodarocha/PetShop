@@ -29,8 +29,8 @@ public class ClienteService {
     }
 
     private void validaTamanhoCpf(Cliente cliente) throws NegocioException {
-        if (cliente.getCpf().replaceAll("\\D","").length() < TAMANHO_CPF) {
-            throw new NegocioException(String.format("O CPF precisa ter %d caracteres",TAMANHO_CPF));
+        if (cliente.getCpf().replaceAll("\\D","").length() != TAMANHO_CPF) {
+            throw new NegocioException(String.format("O CPF precisa ter %d digitos!",TAMANHO_CPF));
         }
     }
 
