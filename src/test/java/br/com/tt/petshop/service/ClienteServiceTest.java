@@ -10,7 +10,8 @@ import static org.junit.jupiter.api.Assertions.*;
 class ClienteServiceTest {
 
     private ClienteService clienteService;
-    private static final String NOME_CLIENTE = "Fabiano Rocha";
+    private static final String NOME_CLIENTE_VALIDO = "Fabiano Rocha";
+    private static final String CPF_CLIENTE_VALIDO = "12345678911";
 
     @BeforeEach
     public void inicia() {
@@ -20,7 +21,7 @@ class ClienteServiceTest {
     @Test
     public void deveriaSalvarComSucesso() throws NegocioException {
         Cliente novoCliente = new Cliente();
-        novoCliente.setNome(NOME_CLIENTE);
+        novoCliente.setNome(NOME_CLIENTE_VALIDO);
         novoCliente.setCpf("123.456.789-10");
         clienteService.salvar(novoCliente);
 
@@ -37,11 +38,23 @@ class ClienteServiceTest {
     }
 
     @Test
+    public void deveriaFalharComNomeParteMenorQue2(){
+        String nome = "Fulano 1";
+        Cliente cliente = new Cliente();
+        cliente.setNome(nome);
+        cliente.setCpf(CPF_CLIENTE_VALIDO);
+        NegocioException e = assertThrows(NegocioException.class, () -> clienteService.salvar(cliente));
+
+        assertEquals("Cada parte do nome precisa de no mínimo 2 digitos!",e.getMessage());
+    }
+
+
+    @Test
     public void deveriaFalharComCpfMenorQue11(){
         String cpf = "123.123.123-1";
 
         Cliente cliente = new Cliente();
-        cliente.setNome(NOME_CLIENTE);
+        cliente.setNome(NOME_CLIENTE_VALIDO);
         cliente.setCpf(cpf);
 
         NegocioException e = assertThrows(NegocioException.class, () -> clienteService.salvar(cliente));
@@ -54,7 +67,7 @@ class ClienteServiceTest {
         String cpf = "123.123.123-011";
 
         Cliente cliente = new Cliente();
-        cliente.setNome(NOME_CLIENTE);
+        cliente.setNome(NOME_CLIENTE_VALIDO);
         cliente.setCpf(cpf);
 
         NegocioException e = assertThrows(NegocioException.class, () -> clienteService.salvar(cliente));
@@ -66,7 +79,7 @@ class ClienteServiceTest {
         String cpf = "123.123.123";
 
         Cliente cliente = new Cliente();
-        cliente.setNome(NOME_CLIENTE);
+        cliente.setNome(NOME_CLIENTE_VALIDO);
         cliente.setCpf(cpf);
 
         NegocioException e = assertThrows(NegocioException.class, () -> clienteService.salvar(cliente));

@@ -13,6 +13,7 @@ public class ClienteService {
 
     private static final int QTD_MINIMA_PARTES_NOME = 2;
     private static final int TAMANHO_CPF = 11;
+    private static final int TAMANHO_PARTE_NOME = 2;
     private List<Cliente> clientes = new ArrayList<>();
 
 
@@ -24,8 +25,18 @@ public class ClienteService {
 
         validaQuantidadePartesNome(cliente);
         validaTamanhoCpf(cliente);
+        validaTamanhoParteNome(cliente);
 
         this.clientes.add(cliente);
+    }
+
+    private void validaTamanhoParteNome(Cliente cliente) throws NegocioException {
+        String[] nomeCompleto = cliente.getNome().trim().split(" ");
+        for (String parte : nomeCompleto) {
+            if (parte.length() < TAMANHO_PARTE_NOME) {
+                throw new NegocioException(String.format("Cada parte do nome precisa de no mínimo %d digitos!",TAMANHO_PARTE_NOME));
+            }
+        }
     }
 
     private void validaTamanhoCpf(Cliente cliente) throws NegocioException {
