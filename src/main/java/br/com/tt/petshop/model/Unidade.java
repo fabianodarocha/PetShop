@@ -1,11 +1,11 @@
 package br.com.tt.petshop.model;
 
-public class Cliente {
+public class Unidade {
 
     private String nome;
-    private String cpf;
+    private String endereco;
     private String telefone;
-    private String email;
+    private String cnpj;
 
     public String getTelefone() {
         return telefone;
@@ -15,12 +15,12 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getCnpj() {
+        return cnpj;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getNome() {
@@ -31,11 +31,11 @@ public class Cliente {
         this.nome = nome;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }

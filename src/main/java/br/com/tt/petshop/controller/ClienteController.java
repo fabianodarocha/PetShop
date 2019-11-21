@@ -38,8 +38,12 @@ public class ClienteController {
     @RequestMapping(method = RequestMethod.POST, value="/admin/clientes/criarNovo")
     public String criarNovo(Cliente cliente, Model model) {
 
-        clienteService.salvar(cliente);
-        model.addAttribute("mensagem", "Cliente salvo com sucesso");
+        try {
+            clienteService.salvar(cliente);
+            model.addAttribute("mensagem", "Cliente salvo com sucesso");
+        } catch (Exception e) {
+            model.addAttribute("mensagem", "Erro: ".concat(e.getMessage()));
+        }
 
         model.addAttribute("clientes",clienteService.listar());
         return "inicial";
