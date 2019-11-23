@@ -2,10 +2,10 @@ package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.exceptions.NegocioException;
 import br.com.tt.petshop.model.Cliente;
+import br.com.tt.petshop.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -14,11 +14,16 @@ public class ClienteService {
     private static final int QTD_MINIMA_PARTES_NOME = 2;
     private static final int TAMANHO_CPF = 11;
     private static final int TAMANHO_PARTE_NOME = 2;
-    private List<Cliente> clientes = new ArrayList<>();
+
+    private final ClienteRepository clienteRepository;
+
+    public ClienteService(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
+    }
 
 
     public List<Cliente> listar() {
-        return clientes;
+        return clienteRepository.findAll();
     }
 
     public void salvar(Cliente cliente) throws NegocioException {
@@ -27,7 +32,8 @@ public class ClienteService {
         validaTamanhoCpf(cliente);
         validaTamanhoParteNome(cliente);
 
-        this.clientes.add(cliente);
+        clienteRepository.save(cliente);
+
     }
 
     private void validaTamanhoParteNome(Cliente cliente) throws NegocioException {

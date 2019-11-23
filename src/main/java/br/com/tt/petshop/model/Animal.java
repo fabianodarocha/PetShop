@@ -9,6 +9,7 @@ public class Animal {
 
     @Id
     @Column(name = "ID_ANIMAL")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  //Auto-incremente
     private Long id;
 
     @Column
@@ -18,10 +19,17 @@ public class Animal {
     private LocalDate dataNascimento;
 
     //Demarca que não é uma coluna do banco, deve ser ignorada
-    //Mas por favor não usar
+    //Mas por favor não usar, user DTO
 //    @Transient
 //    private boolean flag;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public LocalDate getDataNascimento() {
         return dataNascimento;

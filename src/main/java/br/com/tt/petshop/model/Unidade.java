@@ -1,11 +1,35 @@
 package br.com.tt.petshop.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "TB_UNIDADE")
 public class Unidade {
 
+    @Id
+    @Column(name = "ID_UNIDADE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  //Auto-incremente
+    private Long id;
+
+    @Column
     private String nome;
+
+    @Column
     private String endereco;
+
+    @Column
     private String telefone;
+
+    @Column
     private String cnpj;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getTelefone() {
         return telefone;

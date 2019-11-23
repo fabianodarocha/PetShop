@@ -12,7 +12,9 @@
       <li  th:each="cli : ${clientes}" th:text="${cli.nome+' | CPF:'+cli.cpf}"></li>
   </ul>
 
-  <a th:href="@{/admin/clientes/criar}">Criar Novo</a>
+  <a th:href="@{/admin/clientes/criar}">Criar Novo Cliente</a>
+  </br>
+  <a th:href="@{/admin/unidades/criar}">Criar Nova Unidade</a>
 
 </body>
 </html>

@@ -1,0 +1,17 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3> Lista de Unidades </h3>
+
+<label th:text="${mensagem}" />
+
+<ul>
+    <li  th:each="uni : ${unidades}" th:text="${uni.nome+' | Endereço:'+uni.endereco}"></li>
+</ul>
+
+<a th:href="@{/admin/clientes/criar}">Criar Novo Cliente</a>
+</br>
+<a th:href="@{/admin/unidades/criar}">Criar Nova Unidade</a>
