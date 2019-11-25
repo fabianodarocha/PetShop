@@ -4,17 +4,15 @@
     <title>Title</title>
 </head>
 <body>
-  <h3> Lista de Clientes</h3>
+<h1> PetShop </h1>
 
-  <label th:text="${mensagem}" />
+<label th:text="${mensagem}" />
 
-  <ul>
-      <li  th:each="cli : ${clientes}" th:text="${cli.nome+' | CPF:'+cli.cpf}"></li>
-  </ul>
+<h4>Menu:</h4>
 
-  <a th:href="@{/admin/clientes/criar}">Criar Novo Cliente</a>
-  </br>
-  <a th:href="@{/admin/unidades/criar}">Criar Nova Unidade</a>
+<a th:href="@{/admin/clientes}">Clientes</a>
+</br>
+<a th:href="@{/admin/unidades}">Unidades</a>
 
 </body>
 </html>

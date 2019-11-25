@@ -26,13 +26,13 @@ public class ClienteController {
                 "Bem vindo a lista de Clientes da PetShop");
 
         model.addAttribute("clientes",clienteService.listar());
-        return "inicial";
+        return "cliente/cliente";
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/admin/clientes/criar")
     public String clienteCriar(Model model) {
         model.addAttribute("novoCliente",new Cliente());
-        return "cliente_criar";
+        return "cliente/cliente_criar";
     }
 
     @RequestMapping(method = RequestMethod.POST, value="/admin/clientes/criarNovo")
@@ -46,7 +46,7 @@ public class ClienteController {
         }
 
         model.addAttribute("clientes",clienteService.listar());
-        return "inicial";
+        return "cliente/cliente";
     }
 
 

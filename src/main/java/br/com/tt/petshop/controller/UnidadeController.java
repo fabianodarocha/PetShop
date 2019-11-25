@@ -24,13 +24,13 @@ public class UnidadeController {
                 "Bem vindo a lista de Unidades da PetShop");
 
         model.addAttribute("unidades",unidadeService.listar());
-        return "inicial_unidade";
+        return "unidade/unidade";
     }
 
     @RequestMapping(method = RequestMethod.GET, value="/admin/unidades/criar")
     public String unidadeCriar(Model model) {
         model.addAttribute("novaUnidade",new Unidade());
-        return "unidade_criar";
+        return "unidade/unidade_criar";
     }
 
     @RequestMapping(method = RequestMethod.POST, value="/admin/unidades/criarNova")
@@ -44,7 +44,7 @@ public class UnidadeController {
         }
 
         model.addAttribute("unidades",unidadeService.listar());
-        return "inicial_unidade";
+        return "unidade/unidade";
     }
 
 

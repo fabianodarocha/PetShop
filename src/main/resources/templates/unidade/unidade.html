@@ -16,6 +16,8 @@
     <li  th:each="uni : ${unidades}" th:text="${uni.nome+' | Endereço:'+uni.endereco}"></li>
 </ul>
 
+<a th:href="@{/admin}">Início</a>
+</br>
 <a th:href="@{/admin/clientes/criar}">Criar Novo Cliente</a>
 </br>
 <a th:href="@{/admin/unidades/criar}">Criar Nova Unidade</a>
