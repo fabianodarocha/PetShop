@@ -7,6 +7,10 @@
 <h3> Lista de Unidades </h3>
 
 <label th:text="${mensagem}" />
+<form th:method="post" th:action="@{/admin/unidades/filtrarUnidade}">
+<input name="filtrar"><br>
+<input  type="submit" value="Filtrar">
+</form>
 
 <ul>
     <li  th:each="uni : ${unidades}" th:text="${uni.nome+' | Endereço:'+uni.endereco}"></li>

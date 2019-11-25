@@ -21,8 +21,6 @@ public class UnidadeService {
     }
 
     public void salvar(Unidade unidade) throws NegocioException {
-
-
         unidadeRepository.save(unidade);
 
     }

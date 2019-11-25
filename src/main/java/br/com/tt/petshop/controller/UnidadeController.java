@@ -23,7 +23,7 @@ public class UnidadeController {
         model.addAttribute("mensagem",
                 "Bem vindo a lista de Unidades da PetShop");
 
-        model.addAttribute("clientes",unidadeService.listar());
+        model.addAttribute("unidades",unidadeService.listar());
         return "inicial_unidade";
     }
 
