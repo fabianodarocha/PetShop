@@ -20,8 +20,8 @@ public class UnidadeService {
         return unidadeRepository.findAll();
     }
 
-    public void salvar(Unidade unidade) throws NegocioException {
-        unidadeRepository.save(unidade);
+    public Unidade salvar(Unidade unidade) throws NegocioException {
+        return unidadeRepository.save(unidade);
 
     }
 
