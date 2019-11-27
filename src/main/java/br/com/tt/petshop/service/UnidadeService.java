@@ -22,7 +22,10 @@ public class UnidadeService {
 
     public Unidade salvar(Unidade unidade) throws NegocioException {
         return unidadeRepository.save(unidade);
+    }
 
+    public void deletar(Long id) {
+        unidadeRepository.deleteById(id);
     }
 
 }

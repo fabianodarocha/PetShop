@@ -29,6 +29,12 @@ public class UnidadeEndPoint {
         return ResponseEntity.ok(null);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity deletar(@PathVariable Long id) {
+        unidadeService.deletar(id);
+        return ResponseEntity.noContent().build();
+    }
+
     @PostMapping
     public ResponseEntity salvar(@RequestBody Unidade unidade) throws NegocioException {
         Unidade unidadeSalva = unidadeService.salvar(unidade);
