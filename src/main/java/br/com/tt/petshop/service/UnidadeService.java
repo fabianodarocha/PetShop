@@ -1,6 +1,7 @@
 package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.exceptions.NegocioException;
+import br.com.tt.petshop.exceptions.RegistroNaoExisteException;
 import br.com.tt.petshop.model.Unidade;
 import br.com.tt.petshop.repository.UnidadeRepository;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,12 @@ public class UnidadeService {
 
     public void deletar(Long id) {
         unidadeRepository.deleteById(id);
+    }
+
+    public Unidade buscarPorId(Long id) {
+
+        return unidadeRepository.findById(id)
+                .orElseThrow(() -> new RegistroNaoExisteException("Unidade não existe"));
     }
 
 }

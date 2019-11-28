@@ -24,6 +24,17 @@ public class Unidade {
     @Column
     private String cnpj;
 
+    @OneToMany(mappedBy = "unidade")
+    private List<Cliente> clientes;
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
     public Long getId() {
         return id;
     }

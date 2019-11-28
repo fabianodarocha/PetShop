@@ -24,15 +24,21 @@ public class UnidadeEndPoint {
         return ResponseEntity.ok(unidadeService.listar());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Unidade> buscar(@PathVariable Long id) {
-        return ResponseEntity.ok(null);
-    }
+   // @GetMapping("/{id}")
+   // public ResponseEntity<Unidade> buscar(@PathVariable Long id) {
+   //     return ResponseEntity.ok(null);
+   // }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletar(@PathVariable Long id) {
+    public ResponseEntity deletar(@PathVariable("id") Long id) {
         unidadeService.deletar(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Unidade> buscarPorId(@PathVariable Long id) {
+        Unidade unidade = unidadeService.buscarPorId(id);
+        return ResponseEntity.ok(unidade);
     }
 
     @PostMapping
