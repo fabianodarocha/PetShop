@@ -1,5 +1,7 @@
 package br.com.tt.petshop.dto;
 
+import br.com.tt.petshop.model.Unidade;
+
 public class UnidadeOutDTO {
 
     private Long id;
@@ -7,6 +9,14 @@ public class UnidadeOutDTO {
     private String endereco;
     private String telefone;
     private String cnpj;
+
+    public UnidadeOutDTO(Unidade u) {
+        this.setId(u.getId());
+        this.setNome(u.getNome());
+        this.setCnpj(u.getCnpj());
+        this.setEndereco(u.getEndereco());
+    }
+
 
     public Long getId() {
         return id;

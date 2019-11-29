@@ -22,6 +22,8 @@ dependencies {
 	compile('io.springfox:springfox-swagger2:2.9.2')
 	compile('io.springfox:springfox-swagger-ui:2.9.2')
 
+    compile group: 'org.modelmapper', name: 'modelmapper', version: '2.3.5'
+
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
