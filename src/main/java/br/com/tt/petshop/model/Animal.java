@@ -1,6 +1,8 @@
 package br.com.tt.petshop.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -13,10 +15,20 @@ public class Animal {
     private Long id;
 
     @Column
+    @NotBlank
     private String nome;
 
     @Column
+    @NotNull
     private LocalDate dataNascimento;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_UNIDADE")
+    private Unidade unidade;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_CLIENTE")
+    private Cliente cliente;
 
     //Demarca que não é uma coluna do banco, deve ser ignorada
     //Mas por favor não usar, user DTO
@@ -51,4 +63,19 @@ public class Animal {
         this.nome = novoNome;
     }
 
+    public Unidade getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(Unidade unidade) {
+        this.unidade = unidade;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
