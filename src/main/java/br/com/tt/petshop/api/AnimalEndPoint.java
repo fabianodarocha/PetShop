@@ -32,7 +32,7 @@ public class AnimalEndPoint {
 
     @GetMapping
     @ApiOperation("Responsável por buscar os animais")
-    public ResponseEntity<List<AnimalOutDTO>> buscar(){
+    public ResponseEntity<List<AnimalOutDTO>> listar(){
         List<AnimalOutDTO> animais =
                 animalService.listar().stream()
                         .map((u) -> mapper.map(u, AnimalOutDTO.class))
@@ -58,7 +58,7 @@ public class AnimalEndPoint {
     @PostMapping
     public ResponseEntity salvar(@Valid @RequestBody AnimalInDTO dto) throws NegocioException {
         Animal animal = mapper.map(dto, Animal.class);
-        Animal unidadeSalva = animalService.salvar(animal);
+        Animal animalSalvo = animalService.salvar(animal);
         Long idCriado =  animal.getId();
         URI location = URI.create(String.format("/animais/%d", idCriado));
         return ResponseEntity.created(location).build();

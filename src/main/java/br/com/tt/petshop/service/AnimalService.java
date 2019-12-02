@@ -21,8 +21,8 @@ public class AnimalService {
         return animalRepository.findAll();
     }
 
-    public Animal salvar(Animal unidade) throws NegocioException {
-        return animalRepository.save(unidade);
+    public Animal salvar(Animal animal) throws NegocioException {
+        return animalRepository.save(animal);
     }
 
     public void deletar(Long id) {
