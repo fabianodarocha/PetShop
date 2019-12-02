@@ -30,7 +30,6 @@ public class UnidadeService {
     }
 
     public Unidade buscarPorId(Long id) {
-
         return unidadeRepository.findById(id)
                 .orElseThrow(() -> new RegistroNaoExisteException("Unidade não existe"));
     }

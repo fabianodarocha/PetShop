@@ -32,7 +32,7 @@ public class UnidadeEndPoint {
 
     @GetMapping
     @ApiOperation("Responsável por buscar as unidades")
-    public ResponseEntity<List<UnidadeOutDTO>> buscar(){
+    public ResponseEntity<List<UnidadeOutDTO>> listar(){
             List<UnidadeOutDTO> unidades =
                     unidadeService.listar().stream()
                     .map((u) -> mapper.map(u, UnidadeOutDTO.class))
