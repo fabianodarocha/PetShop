@@ -7,6 +7,24 @@ public class AnimalOutDTO {
     private Long id;
     private String nome;
     private LocalDate dataNascimento;
+    private String unidade;
+    private String cliente;
+
+    public String getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(String unidade) {
+        this.unidade = unidade;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
 
     public Long getId() {
         return id;

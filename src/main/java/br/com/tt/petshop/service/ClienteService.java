@@ -1,6 +1,7 @@
 package br.com.tt.petshop.service;
 
 import br.com.tt.petshop.exceptions.NegocioException;
+import br.com.tt.petshop.exceptions.RegistroNaoExisteException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.ClienteRepository;
 import org.springframework.stereotype.Service;
@@ -57,6 +58,11 @@ public class ClienteService {
         if (contaNome < QTD_MINIMA_PARTES_NOME) {
             throw new NegocioException(String.format("Precisa informar o nome composto de %d partes",QTD_MINIMA_PARTES_NOME));
         }
+    }
+
+    public Cliente buscarPorId(Long id) {
+        return clienteRepository.findById(id)
+                .orElseThrow(() -> new RegistroNaoExisteException("Cliente não existe"));
     }
 
 

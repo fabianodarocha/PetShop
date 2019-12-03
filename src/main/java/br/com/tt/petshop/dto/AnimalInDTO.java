@@ -14,6 +14,28 @@ public class AnimalInDTO {
     @NotNull(message = "Informe a Data de Nascimento!")
     private LocalDate dataNascimento;
 
+    @NotNull(message = "Informe o código do cliente")
+    private Long cliente;
+
+    @NotNull(message = "Informe o código da unidade")
+    private Long unidade;
+
+    public Long getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Long cliente) {
+        this.cliente = cliente;
+    }
+
+    public Long getUnidade() {
+        return unidade;
+    }
+
+    public void setUnidade(Long unidade) {
+        this.unidade = unidade;
+    }
+
     public String getNome() {
         return nome;
     }
