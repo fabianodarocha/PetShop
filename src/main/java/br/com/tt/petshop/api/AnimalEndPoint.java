@@ -35,13 +35,15 @@ public class AnimalEndPoint {
     @ApiOperation("Responsável por buscar os animais")
     public ResponseEntity<List<AnimalOutDTO>> listar(
             //@RequestParam(required = false) String nome
-            @RequestParam("nome") Optional<String> nome
+            @RequestParam("nome") Optional<String> nome,
+            @RequestParam("cliente") Optional<Long> idCliente,
+            @RequestParam("unidade") Optional<Long> idUnidade
       ){
 
-        List<Animal> lista = animalService.listar(nome);
+        List<Animal> lista = animalService.listar(nome,idCliente,idUnidade);
 
         List<AnimalOutDTO> animais =
-                animalService.listar(nome).stream()
+                animalService.listar(nome, idCliente, idUnidade).stream()
                         .map((u) -> mapper.map(u, AnimalOutDTO.class))
                         .collect(Collectors.toList());
         return ResponseEntity.ok(animais);

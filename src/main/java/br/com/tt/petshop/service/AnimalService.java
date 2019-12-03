@@ -8,6 +8,7 @@ import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.model.Unidade;
 import br.com.tt.petshop.repository.AnimalRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -30,12 +31,36 @@ public class AnimalService {
         this.mapper = mapper;
     }
 
-    public List<Animal> listar(Optional<String> nome) {
-        if (nome.isPresent()) {
-            return animalRepository.listarPorNome(nome.get());
-        } else {
-            return animalRepository.findAll();
+    public List<Animal> listar(Optional<String> nome, Optional<Long> idCliente, Optional<Long> idUnidade) {
+
+
+        Animal animal = new Animal();
+        //nome.ifPresent(nomeStr -> animal.setNome(nomeStr)); Com Lambda
+
+        if(nome.isPresent()) {
+            animal.setNome(nome.get());
         }
+        if (idCliente.isPresent()) {
+            Cliente cliente = new Cliente();
+            cliente.setId(idCliente.get());
+            animal.setCliente(cliente);
+        }
+        if (idUnidade.isPresent()) {
+            Unidade unidade = new Unidade();
+            unidade.setId(idUnidade.get());
+            animal.setUnidade(unidade);
+        }
+
+        return animalRepository.findAll(Example.of(animal));
+
+
+        /*
+        if (nome.isPresent())
+            return animalRepository.listarPorNome(nome.get());
+        }
+        else {
+            return animalRepository.findAll();
+        }*/
 
 
     }

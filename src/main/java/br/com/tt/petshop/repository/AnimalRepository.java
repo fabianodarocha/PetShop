@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
-    @Query("select a From Animal a WHERE a.nome like :nomeAnimal ")
-    List<Animal> listarPorNome(@Param("nomeAnimal") String nome);
+    //@Query("select a From Animal a WHERE a.nome like :nomeAnimal ")
+   // List<Animal> listarPorNome(@Param("nomeAnimal") String nome);
 }
