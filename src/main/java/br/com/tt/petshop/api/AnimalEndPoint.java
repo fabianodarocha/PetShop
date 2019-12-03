@@ -36,8 +36,8 @@ public class AnimalEndPoint {
     public ResponseEntity<List<AnimalOutDTO>> listar(
             //@RequestParam(required = false) String nome
             @RequestParam("nome") Optional<String> nome,
-            @RequestParam("cliente") Optional<Long> idCliente,
-            @RequestParam("unidade") Optional<Long> idUnidade
+            @RequestParam("idCliente") Optional<Long> idCliente,
+            @RequestParam("idUnidade") Optional<Long> idUnidade
       ){
 
         List<Animal> lista = animalService.listar(nome,idCliente,idUnidade);
