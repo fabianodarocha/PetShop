@@ -39,7 +39,7 @@ public class ClienteEndPoint {
             @RequestParam("cpf") Optional<String> cpf
     ){
 
-        List<Cliente> lista = clienteService.listar(nome,cpf);
+        //List<Cliente> lista = clienteService.listar(nome,cpf);
 
         List<ClienteOutDTO> animais =
                 clienteService.listar(nome, cpf).stream()
