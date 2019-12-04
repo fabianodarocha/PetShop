@@ -4,10 +4,12 @@ import br.com.tt.petshop.exceptions.NegocioException;
 import br.com.tt.petshop.exceptions.RegistroNaoExisteException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.repository.ClienteRepository;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClienteService {
@@ -20,11 +22,24 @@ public class ClienteService {
 
     public ClienteService(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
+
     }
 
 
-    public List<Cliente> listar() {
-        return clienteRepository.findAll();
+    public List<Cliente> listar(Optional<String> nome, Optional<String> cpf) {
+
+
+        if (nome.isPresent() && ! cpf.isPresent()) {
+            return clienteRepository.buscaPorNome(nome.get());
+        } else if (! nome.isPresent() && cpf.isPresent()) {
+            return clienteRepository.buscaPorCpf(cpf.get());
+        } else if (nome.isPresent() && cpf.isPresent()) {
+            return clienteRepository.buscaPorNomeCpf(nome.get(), cpf.get());
+        } else {
+            return clienteRepository.findAll();
+        }
+
+
     }
 
     public void salvar(Cliente cliente) throws NegocioException {

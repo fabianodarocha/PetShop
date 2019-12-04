@@ -25,7 +25,7 @@ public class ClienteController {
         model.addAttribute("mensagem",
                 "Bem vindo a lista de Clientes da PetShop");
 
-        model.addAttribute("clientes",clienteService.listar());
+        model.addAttribute("clientes",clienteService.listar(null,null));
         return "cliente/cliente";
     }
 
@@ -45,7 +45,7 @@ public class ClienteController {
             model.addAttribute("mensagem", "Erro: ".concat(e.getMessage()));
         }
 
-        model.addAttribute("clientes",clienteService.listar());
+        model.addAttribute("clientes",clienteService.listar(null,null));
         return "cliente/cliente";
     }
 
