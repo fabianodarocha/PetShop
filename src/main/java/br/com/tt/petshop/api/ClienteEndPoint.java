@@ -41,11 +41,11 @@ public class ClienteEndPoint {
 
         //List<Cliente> lista = clienteService.listar(nome,cpf);
 
-        List<ClienteOutDTO> animais =
+        List<ClienteOutDTO> cliente =
                 clienteService.listar(nome, cpf).stream()
                         .map((u) -> mapper.map(u, ClienteOutDTO.class))
                         .collect(Collectors.toList());
-        return ResponseEntity.ok(animais);
+        return ResponseEntity.ok(cliente);
     }
 
 
