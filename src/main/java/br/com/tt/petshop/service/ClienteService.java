@@ -28,10 +28,9 @@ public class ClienteService {
 
     public List<Cliente> listar(Optional<String> nome, Optional<String> cpf) {
 
-
-        if (nome.isPresent() && ! cpf.isPresent()) {
+        if (nome.isPresent() && !cpf.isPresent()) {
             return clienteRepository.buscaPorNome(nome.get());
-        } else if (! nome.isPresent() && cpf.isPresent()) {
+        } else if (!nome.isPresent() && cpf.isPresent()) {
             return clienteRepository.buscaPorCpf(cpf.get());
         } else if (nome.isPresent() && cpf.isPresent()) {
             return clienteRepository.buscaPorNomeCpf(nome.get(), cpf.get());
