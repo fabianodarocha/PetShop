@@ -7,6 +7,15 @@ public class ClienteOutDTO {
     private String cpf;
     private String telefone;
     private String email;
+    private String unidadeNome;
+
+    public String getUnidadeNome() {
+        return unidadeNome;
+    }
+
+    public void setUnidadeNome(String unidadeNome) {
+        this.unidadeNome = unidadeNome;
+    }
 
     public Long getId() {
         return id;
