@@ -36,6 +36,17 @@ class ClienteRepositoryIntegrationTest {
 
     }
 
+    @Test
+    public void deveriaBuscarNomeAndCpf() {
+        List<Cliente> clientes = clienteRepository.findByNomeOrCpf("Fabiano","0122323454");
+        Cliente cliente1 = clientes.get(0);
+        Cliente cliente2 = clientes.get(1);
+
+        Assertions.assertEquals("0122323454",cliente1.getCpf());
+        Assertions.assertEquals("Fabiano",cliente2.getNome());
+
+    }
+
 
 
 }
