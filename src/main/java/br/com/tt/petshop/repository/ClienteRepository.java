@@ -21,4 +21,6 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     List<Cliente> buscaPorNomeCpf(@Param("nome") String nome, @Param("cpf") String cpf);
 
     List<Cliente> FindByNome(String nome);
+
+    void deleteByNomeLike(String nome);
 }
