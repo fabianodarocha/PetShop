@@ -31,7 +31,8 @@ public class ClienteService {
         if (nome.isPresent() && cpf.isPresent()) {
             return clienteRepository.buscaPorNomeCpf(nome.get(), cpf.get());
         } else if (nome.isPresent()) {
-            return clienteRepository.buscaPorNome(nome.get());
+            //return clienteRepository.buscaPorNome(nome.get());
+            return clienteRepository.FindByNome(nome.get());
         } else if (cpf.isPresent()) {
             return clienteRepository.buscaPorCpf(cpf.get());
         } else {
