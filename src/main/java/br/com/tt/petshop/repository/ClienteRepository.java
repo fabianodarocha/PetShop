@@ -20,11 +20,11 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
     @Query("select a From Cliente a WHERE a.nome like :nome or a.cpf like :cpf ")
     List<Cliente> buscaPorNomeCpf(@Param("nome") String nome, @Param("cpf") String cpf);
 
-    List<Cliente> FindByNome(String nome);
+    List<Cliente> findByNome(String nome);
 
-    List<Cliente> FindByCpf(String cpf);
+    List<Cliente> findByCpf(String cpf);
 
-    List<Cliente> FindByNomeOrCpf(String cpf);
+    List<Cliente> findByNomeOrCpf(String nome, String cpf);
 
     void deleteByNomeLike(String nome);
 }
