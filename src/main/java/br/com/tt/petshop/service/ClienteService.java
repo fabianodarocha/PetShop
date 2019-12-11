@@ -1,5 +1,8 @@
 package br.com.tt.petshop.service;
 
+import br.com.tt.petshop.client.SituacaoCredito;
+import br.com.tt.petshop.client.SituacaoCreditoClient;
+import br.com.tt.petshop.client.SituacaoCreditoDto;
 import br.com.tt.petshop.exceptions.NegocioException;
 import br.com.tt.petshop.exceptions.RegistroNaoExisteException;
 import br.com.tt.petshop.model.Cliente;
@@ -19,10 +22,11 @@ public class ClienteService {
     private static final int TAMANHO_PARTE_NOME = 2;
 
     private final ClienteRepository clienteRepository;
+    private final SituacaoCreditoClient situacaoCreditoClient;
 
-    public ClienteService(ClienteRepository clienteRepository) {
+    public ClienteService(ClienteRepository clienteRepository, SituacaoCreditoClient situacaoCreditoClient) {
         this.clienteRepository = clienteRepository;
-
+        this.situacaoCreditoClient = situacaoCreditoClient;
     }
 
 
@@ -47,9 +51,22 @@ public class ClienteService {
         validaTamanhoCpf(cliente);
         validaTamanhoParteNome(cliente);
 
+        validaSituacaoCredito(cliente);
+
         clienteRepository.save(cliente);
 
     }
+
+    public void validaSituacaoCredito(Cliente cliente) throws NegocioException {
+
+        SituacaoCreditoDto situacaoCredito = situacaoCreditoClient.consultaSituacao(cliente.getCpf());
+
+        if (situacaoCredito.getSituacao().equals(SituacaoCredito.NEGATIVADO)){
+            throw new NegocioException("Cliente não pode ser cadastrado. Verifique a situação!");
+        }
+
+    }
+
 
     private void validaTamanhoParteNome(Cliente cliente) throws NegocioException {
         String[] nomeCompleto = cliente.getNome().trim().split(" ");
