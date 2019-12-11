@@ -20,4 +20,9 @@ public class SituacaoCreditoDto {
     public void setPontos(Integer pontos) {
         this.pontos = pontos;
     }
+
+    public Boolean isRegular() {
+        return SituacaoCredito.NORMAL.equals(situacao);
+    }
+
 }
