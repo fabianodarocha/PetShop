@@ -1,18 +1,18 @@
 package br.com.tt.petshop.api;
 
+import br.com.tt.petshop.dto.ClienteInDto;
 import br.com.tt.petshop.dto.ClienteOutDTO;
 import br.com.tt.petshop.dto.UnidadeOutDTO;
+import br.com.tt.petshop.exceptions.NegocioException;
 import br.com.tt.petshop.model.Cliente;
 import br.com.tt.petshop.service.ClienteService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,6 +46,17 @@ public class ClienteEndPoint {
                         .map((u) -> mapper.map(u, ClienteOutDTO.class))
                         .collect(Collectors.toList());
         return ResponseEntity.ok(cliente);
+    }
+
+    @PostMapping
+    public ResponseEntity<Cliente> criar(@RequestBody ClienteInDto clientInDto) throws NegocioException {
+
+        Cliente cliente = mapper.map(clientInDto, Cliente.class);
+        Cliente clienteSalvo = clienteService.salvar(cliente);
+        URI location = URI.create("/clientes".concat(""+clienteSalvo.getId()));
+        return ResponseEntity
+                .created(location).build();
+
     }
 
 

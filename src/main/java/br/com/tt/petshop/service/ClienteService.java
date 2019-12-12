@@ -45,7 +45,7 @@ public class ClienteService {
 
     }
 
-    public void salvar(Cliente cliente) throws NegocioException {
+    public Cliente salvar(Cliente cliente) throws NegocioException {
 
         validaQuantidadePartesNome(cliente);
         validaTamanhoCpf(cliente);
@@ -53,7 +53,9 @@ public class ClienteService {
 
         validaSituacaoCredito(cliente);
 
-        clienteRepository.save(cliente);
+        return clienteRepository.save(cliente);
+
+
 
     }
 
