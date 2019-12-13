@@ -1,0 +1,23 @@
+#Log
+logging:
+  level:
+    org.hibernate.SQL: debug
+#
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+
+apis:
+  credito:
+    url: https://imersao-credito-api.herokuapp.com/credito/{cpf}
+
+#spring.datasource.url=jdbc:h2:file:~/petshop.db
+#spring.h2.console.enabled=true
