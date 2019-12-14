@@ -2,6 +2,7 @@ package br.com.tt.petshop.api;
 
 
 import br.com.tt.petshop.config.ModelMapperConfig;
+import org.hamcrest.CoreMatchers;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +45,10 @@ public class UnidadeControllerE2ETest {
                 .perform(MockMvcRequestBuilders.get("/unidades"))
                 .andExpect(MockMvcResultMatchers.status()
                         .is(200))
-                .andExpect(MockMvcResultMatchers.content()
-                        .string("[]"));
+                .andExpect(MockMvcResultMatchers.jsonPath("id")
+                        .value(CoreMatchers.is(1)))
+
+        ;
     }
 
 }
